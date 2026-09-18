@@ -1,15 +1,15 @@
-# OMUDAALA GitHub Website
+# Bulooka
 
-This is the static GitHub Pages version of OMUDAALA.
+Bulooka is Uganda's rental marketplace for houses, rooms, apartments and shops.
 
-## Publish on GitHub Pages
-1. Create/open repository `eng-oscar/omudaala`.
-2. Upload `index.html` to the repository root.
-3. Commit to `main`.
-4. Open Settings → Pages.
-5. Under Build and deployment choose **Deploy from a branch**.
-6. Select `main` and `/ (root)`, then Save.
+## Rental access model
+- Public: exterior photos and the general neighbourhood.
+- Subscribers: interior photos, rental price, full property details and owner phone number.
+- Exact property addresses remain private until the renter contacts the owner.
+- Renters can save listings.
+- Bulooka controls subscription and access to private listing information.
 
-The design is based on the supplied OMUDAALA reference image and is responsive for desktop and mobile.
+## GitHub
+This project is maintained in the eng-oscar/omudaala repository. The main site is index.html. Listing data is in content/listings.json. The admin area is in admin/.
 
-Note: this static version contains front-end demo interactions. Real accounts, payments, seller subscriptions, orders, database storage, reviews and admin authentication require a backend.
+A GitHub Pages workflow is included so the main branch can be deployed as a static site.
