@@ -3,9 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OMUDAALA Admin</title>
+<meta name="theme-color" content="#0b63ce">
+<title>OMUDAALA — Admin Dashboard</title>
+<style>
+  html,body{margin:0;padding:0;background:#f5f7fb}
+  .loading{font-family:Arial,sans-serif;min-height:100vh;display:grid;place-items:center;color:#17324d}
+  .loading-box{text-align:center;padding:32px}
+  .logo{font-size:34px;font-weight:900;color:#0b63ce}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#f28c18;margin-left:5px}
+  .loading p{color:#6b7280}
+</style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) window.netlifyIdentity.on("login", () => location.reload());
+    });
+  }
+</script>
 <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
-<body></body>
+<body>
+  <div class="loading">
+    <div class="loading-box">
+      <div class="logo">🛍️ OMUDAALA<span class="dot"></span></div>
+      <p>Loading your admin dashboard…</p>
+    </div>
+  </div>
+</body>
 </html>
