@@ -182,5 +182,47 @@ function toggleSaved(){showModal('Saved Products','<p>Your saved products will a
 function saveProduct(i){showModal('Saved','<p><b>'+products[i].name+'</b> has been saved.</p>')}
 render();
 </script>
+
+<script>
+(async function loadEditableContent(){
+  try {
+    const [settingsRes, productsRes] = await Promise.all([
+      fetch('content/settings.json?'+Date.now()),
+      fetch('content/products.json?'+Date.now())
+    ]);
+    const settings = await settingsRes.json();
+    const productData = await productsRes.json();
+
+    document.title = settings.siteName + ' — ' + settings.tagline;
+    document.querySelectorAll('.brand strong,.footer-logo').forEach(el => {
+      if (el.classList.contains('footer-logo')) el.innerHTML = '🛍️ ' + settings.siteName;
+      else el.textContent = settings.siteName;
+    });
+    document.querySelectorAll('.brand small').forEach(el => el.textContent = settings.tagline);
+    const heroLogo = document.querySelector('.hero-logo');
+    if(heroLogo) heroLogo.textContent = settings.siteName;
+    const heroH2 = document.querySelector('.hero-copy h2');
+    if(heroH2) heroH2.textContent = settings.heroTitle;
+    const heroP = document.querySelector('.hero-copy p');
+    if(heroP) heroP.innerHTML = settings.heroDescription.replace(/\n/g,'<br>');
+    const about = document.querySelector('.footer-inner > div:first-child p');
+    if(about) about.textContent = settings.about;
+    const copyright = document.querySelector('.copyright span:first-child');
+    if(copyright) copyright.textContent = settings.copyright;
+    const list = productData.products || productData;
+    if(Array.isArray(list)){
+      window.products.splice(0, window.products.length, ...list.map(p => ({
+        ...p,
+        loc: p.location || p.loc || '',
+        cat: p.category || p.cat || ''
+      })));
+      render(window.products);
+    }
+  } catch (e) {
+    console.warn('Editable content could not be loaded; using built-in defaults.', e);
+  }
+})();
+</script>
+
 </body>
 </html>
