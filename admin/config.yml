@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Website Details"
+    files:
+      - file: "content/settings.json"
+        label: "General Website Details"
+        name: "general"
+        fields:
+          - {label: "Website Name", name: "siteName", widget: "string"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Description", name: "heroDescription", widget: "text"}
+          - {label: "About", name: "about", widget: "text"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Copyright", name: "copyright", widget: "string"}
+
+  - name: "products"
+    label: "Products"
+    files:
+      - file: "content/products.json"
+        label: "All Products"
+        name: "all-products"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            fields:
+              - {label: "Product Name", name: "name", widget: "string"}
+              - {label: "Price", name: "price", widget: "string"}
+              - {label: "Condition", name: "condition", widget: "select", options: ["NEW", "USED"]}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Location", name: "location", widget: "string"}
+              - {label: "Seller Phone", name: "phone", widget: "string"}
+              - {label: "Emoji/Icon", name: "icon", widget: "string", required: false}
