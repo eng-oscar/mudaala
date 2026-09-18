@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMUDAALA — Buy. Sell. Find It.</title>
+<meta name="description" content="OMUDAALA Uganda — Buy and sell new and used products.">
+<style>
+:root{
+  --blue:#0758b8;--deep:#063b7e;--navy:#062d5d;--orange:#ff951f;
+  --ink:#173b67;--muted:#64748b;--line:#dce8f4;--bg:#f7fafc;--white:#fff;
+  --shadow:0 5px 18px rgba(14,65,117,.12);
+}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}
+button,input{font:inherit} button{cursor:pointer}
+.top{background:linear-gradient(90deg,#0758b8,#064b9e);color:#fff}
+.header{height:64px;display:flex;align-items:center;gap:24px;max-width:1280px;margin:auto;padding:0 20px}
+.logo{display:flex;align-items:center;gap:9px;min-width:205px;color:#fff;text-decoration:none}
+.bag{width:39px;height:39px;border-radius:8px;background:var(--orange);display:grid;place-items:center;font-size:23px;box-shadow:0 2px 5px #003b76}
+.brand strong{display:block;font-size:22px;line-height:20px;letter-spacing:.2px}.brand small{font-size:13px}
+.search{height:38px;display:flex;flex:1;max-width:550px;background:#fff;border-radius:9px;overflow:hidden}
+.search input{border:0;outline:0;padding:0 14px;flex:1;color:#4a6380;font-size:12px}.search button{width:48px;border:0;background:var(--orange);color:#fff;font-size:20px}
+.actions{display:flex;gap:19px;align-items:center;font-size:12px;white-space:nowrap}.action{display:flex;gap:5px;align-items:center;color:#fff}
+.nav{height:39px;background:#064ca1;border-top:1px solid rgba(255,255,255,.12)}
+.nav-inner{max-width:1280px;margin:auto;height:100%;display:flex;align-items:center;padding:0 20px;gap:33px}.nav a{color:#fff;text-decoration:none;font-size:13px}.nav a.active{height:100%;display:flex;align-items:center;border-bottom:3px solid var(--orange)}
+main{max-width:1280px;margin:auto;padding:18px 20px}
+.hero{height:288px;border-radius:10px;overflow:hidden;background:linear-gradient(100deg,#082f52,#0b5a87);position:relative;box-shadow:var(--shadow);display:flex}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,35,60,.95) 0%,rgba(5,54,80,.7) 45%,rgba(5,60,90,.05) 72%)}
+.hero-copy{position:relative;z-index:2;width:61%;padding:40px 30px;color:#fff}.hero-logo{font-size:45px;font-weight:800;letter-spacing:-1.5px}.hero-logo span{color:var(--orange)}.hero-copy h2{font-size:24px;margin:0 0 11px;color:var(--orange)}.hero-copy p{font-size:16px;line-height:1.45;margin:0 0 25px;font-weight:600}.hero-search{height:39px;background:#fff;border-radius:9px;display:flex;max-width:440px;overflow:hidden}.hero-search input{flex:1;border:0;padding:0 14px;outline:0;font-size:12px}.hero-search button{width:48px;border:0;background:var(--orange);color:#fff;font-size:19px}
+.seller-box{position:absolute;z-index:3;right:22px;top:39px;width:205px;height:205px;background:#075bc0;border-radius:12px;padding:24px 18px;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.18)}.seller-box h3{font-size:20px;margin:36px 0 7px}.seller-box p{font-size:11px;line-height:1.35;margin:0 0 12px}.seller-box button,.orange-btn{border:0;background:var(--orange);color:#123b68;font-weight:700;border-radius:7px;padding:10px 14px;font-size:11px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;box-shadow:var(--shadow);overflow:hidden}.trust-item{display:flex;gap:12px;align-items:center;padding:13px 25px;border-right:1px solid var(--line)}.trust-item:last-child{border:0}.trust-icon{font-size:25px;color:var(--blue)}.trust strong{font-size:11px;display:block}.trust span{font-size:9px;color:var(--muted)}
+.section{margin-top:22px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:0 2px 11px}.section-head h2{font-size:17px;margin:0}.section-head a{font-size:11px;color:#1261b8;text-decoration:none;font-weight:700}
+.categories{display:grid;grid-template-columns:repeat(10,1fr);gap:12px}.cat{text-align:center}.cat-icon{width:55px;height:55px;border-radius:50%;margin:auto;background:linear-gradient(#f2f8ff,#dcecff);border:1px solid #d6e6f6;display:grid;place-items:center;font-size:27px;box-shadow:0 2px 6px rgba(0,60,120,.08)}.cat label{display:block;font-size:10px;font-weight:700;margin-top:8px}
+.products{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.card{border:1px solid #d8e5f0;border-radius:8px;background:#fff;position:relative;padding:7px;box-shadow:0 2px 7px rgba(20,75,125,.06)}.photo{height:125px;border-radius:5px;background:#edf3f8;display:grid;place-items:center;overflow:hidden;position:relative}.photo img{width:100%;height:100%;object-fit:cover}.badge{position:absolute;top:7px;left:7px;border-radius:7px;padding:4px 8px;color:#fff;font-size:9px;font-weight:800}.new{background:#0876dd}.used{background:#f5821f}.heart{position:absolute;right:7px;top:7px;background:#fff;border:1px solid #dbe5ee;border-radius:50%;width:25px;height:25px;color:#33577d}.card h3{font-size:11px;margin:9px 3px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.price{font-weight:800;color:var(--orange);font-size:12px;margin:0 3px 8px}.meta{font-size:9px;color:#5e7389;margin:4px 3px;display:flex;gap:5px}.promos{display:grid;grid-template-columns:1fr 1fr;gap:15px}.promo{height:145px;border-radius:9px;overflow:hidden;position:relative;padding:20px 0 0 175px;color:#fff;background:linear-gradient(110deg,#ff981f,#ff7d14)}.promo.blue{background:linear-gradient(110deg,#0758b8,#0a75dc)}.promo h2{font-size:18px;margin:0 0 6px}.promo p{font-size:10px;line-height:1.35;margin:0 0 10px;max-width:210px}.promo button{border:0;background:#fff;color:#0758b8;border-radius:6px;padding:7px 12px;font-size:10px;font-weight:700}.promo.blue button{background:var(--orange);color:#173b67}.promo:before{content:"📱";position:absolute;left:28px;bottom:-8px;font-size:88px;transform:rotate(-8deg)}.promo.blue:before{content:"📦";font-size:80px}
+.popular{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.popular-card{border-radius:6px;overflow:hidden}.popular-card .pic{height:75px;background:#e8eef4;display:grid;place-items:center;font-size:38px}.popular-card span{display:block;text-align:center;font-size:10px;font-weight:700;padding:6px 2px}
+footer{margin-top:24px;background:var(--navy);color:#fff}.footer-inner{max-width:1280px;margin:auto;padding:20px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:30px}.footer-logo{font-weight:800;font-size:17px}.footer p,.footer li{font-size:9px;color:#d4e2f1;line-height:1.5}.footer h3{font-size:11px;margin:2px 0 8px}.footer ul{list-style:none;padding:0;margin:0}.newsletter{display:flex;height:29px}.newsletter input{min-width:0;flex:1;border:0;border-radius:5px 0 0 5px;padding:0 8px;font-size:9px}.newsletter button{border:0;background:var(--orange);color:#fff;border-radius:0 5px 5px 0;font-size:9px}.copyright{border-top:1px solid rgba(255,255,255,.2);max-width:1240px;margin:auto;padding:9px 20px;display:flex;justify-content:space-between;font-size:8px;color:#c6d6e7}
+.mobile-bottom{display:none}
+.modal{display:none;position:fixed;inset:0;background:rgba(2,26,53,.55);z-index:99;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:12px;max-width:460px;width:100%;padding:22px;box-shadow:0 20px 50px #001c38}.modal-box h2{margin-top:0}.modal-box input{width:100%;height:40px;border:1px solid #ccdbe9;border-radius:7px;margin:6px 0;padding:0 10px}.modal-actions{display:flex;gap:8px;margin-top:12px}.modal-actions button{flex:1;border:0;border-radius:7px;padding:10px;background:var(--blue);color:#fff}.modal-actions .secondary{background:#e8eef5;color:#234568}
+@media(max-width:800px){
+ .header{height:60px;padding:0 12px;gap:9px}.logo{min-width:auto}.brand strong{font-size:15px}.brand small{font-size:8px}.bag{width:32px;height:32px;font-size:18px}.actions{gap:8px;font-size:0}.actions .action span{font-size:18px}.actions .login{font-size:0}.search{position:absolute;top:68px;left:12px;right:12px;max-width:none;height:36px}.nav{display:none}main{padding:54px 10px 70px}.hero{height:202px}.hero-copy{width:100%;padding:24px 17px}.hero-logo{font-size:29px}.hero-copy h2{font-size:16px;margin-bottom:5px}.hero-copy p{font-size:10px;max-width:220px;margin-bottom:12px}.hero-search{height:32px;max-width:245px}.seller-box{display:none}.trust{grid-template-columns:repeat(4,1fr)}.trust-item{padding:9px 4px;display:block;text-align:center}.trust-icon{font-size:19px}.trust strong{font-size:7px}.trust span{display:none}.categories{grid-template-columns:repeat(5,1fr);gap:10px 3px}.cat:nth-child(n+9){display:none}.cat-icon{width:48px;height:48px;font-size:23px}.cat label{font-size:8px}.products{grid-template-columns:repeat(2,1fr);gap:8px}.photo{height:125px}.card h3{font-size:10px}.promos{grid-template-columns:1fr}.promo{height:118px;padding:16px 0 0 130px}.promo h2{font-size:15px}.promo p{font-size:9px;max-width:180px}.popular{grid-template-columns:repeat(3,1fr);gap:8px}.popular-card .pic{height:65px}.footer-inner{grid-template-columns:1fr 1fr;gap:15px;padding:18px}.footer-inner>div:first-child{grid-column:1/-1}.copyright{font-size:7px}.mobile-bottom{display:flex;position:fixed;z-index:80;bottom:0;left:0;right:0;height:58px;background:#fff;border-top:1px solid #d8e5f0;box-shadow:0 -3px 12px rgba(0,0,0,.08);justify-content:space-around}.mobile-bottom button{border:0;background:none;color:#526d88;font-size:9px;padding:5px}.mobile-bottom button.active{color:var(--orange);font-weight:800}.mobile-bottom b{display:block;font-size:18px;margin-bottom:1px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="header">
+    <a class="logo" href="#"><div class="bag">🛍️</div><div class="brand"><strong>OMUDAALA</strong><small>Buy. Sell. Find It.</small></div></a>
+    <div class="search"><input id="globalSearch" placeholder="What are you looking for?"><button onclick="searchProducts()">⌕</button></div>
+    <div class="actions">
+      <div class="action" onclick="toggleSaved()">♡ <span>Saved</span></div>
+      <div class="action" onclick="openCart()">🛒 <span>Cart</span></div>
+      <div class="action login" onclick="openAccount()">👤 <span>Login / Register</span></div>
+    </div>
+  </div>
+  <nav class="nav"><div class="nav-inner"><a class="active" href="#">Home</a><a href="#shop">Shop</a><a href="#categories">Categories⌄</a><a href="#sell">Sell</a><a href="#about">About Us</a><a href="#contact">Contact</a></div></nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-logo">OMUDAALA</div>
+    <h2>Buy. Sell. Find It.</h2>
+    <p>New &amp; Used Products. Great Deals.<br>Real People. Uganda.</p>
+    <div class="hero-search"><input id="heroSearch" placeholder="What are you looking for?"><button onclick="searchFromHero()">⌕</button></div>
+  </div>
+  <div class="seller-box"><div style="font-size:35px">🏪</div><h3>Start Selling</h3><p>Reach thousands of buyers across Uganda.</p><button onclick="openSeller()">Become a Seller　›</button></div>
+</section>
+
+<div class="trust">
+  <div class="trust-item"><div class="trust-icon">🛡️</div><div><strong>Safe &amp; Secure</strong><span>Buy with confidence</span></div></div>
+  <div class="trust-item"><div class="trust-icon">🚚</div><div><strong>Nationwide</strong><span>Buy &amp; sell anywhere</span></div></div>
+  <div class="trust-item"><div class="trust-icon">🏷️</div><div><strong>Great Deals</strong><span>New &amp; used products</span></div></div>
+  <div class="trust-item"><div class="trust-icon">👥</div><div><strong>Local Sellers</strong><span>Support your community</span></div></div>
+</div>
+
+<section class="section" id="categories">
+ <div class="section-head"><h2>Shop by Category</h2><a href="#">View All Categories →</a></div>
+ <div class="categories">
+  <div class="cat"><div class="cat-icon">📱</div><label>Phones &amp;<br>Tablets</label></div>
+  <div class="cat"><div class="cat-icon">💻</div><label>Electronics</label></div>
+  <div class="cat"><div class="cat-icon">🛋️</div><label>Home &amp;<br>Living</label></div>
+  <div class="cat"><div class="cat-icon">👕</div><label>Fashion</label></div>
+  <div class="cat"><div class="cat-icon">🚙</div><label>Vehicles</label></div>
+  <div class="cat"><div class="cat-icon">🏠</div><label>Property</label></div>
+  <div class="cat"><div class="cat-icon">🪑</div><label>Furniture</label></div>
+  <div class="cat"><div class="cat-icon">🌿</div><label>Agriculture</label></div>
+  <div class="cat"><div class="cat-icon">🏀</div><label>Sports &amp;<br>Outdoors</label></div>
+  <div class="cat"><div class="cat-icon">▦</div><label>More</label></div>
+ </div>
+</section>
+
+<section class="section" id="shop">
+ <div class="section-head"><h2>Featured Products</h2><a href="#">View All →</a></div>
+ <div class="products" id="products"></div>
+</section>
+
+<section class="section">
+ <div class="promos">
+  <div class="promo"><h2>Quality Products<br>at the Best Prices</h2><p>New and used. Find what you need today on OMUDAALA.</p><button onclick="document.querySelector('#shop').scrollIntoView()">Browse Products</button></div>
+  <div class="promo blue" id="sell"><h2>Sell Your Products</h2><p>Grow your business with OMUDAALA. It's fast, easy and secure.</p><button onclick="openSeller()">Start Selling</button></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-head"><h2>Popular Categories</h2><a href="#categories">View All →</a></div>
+ <div class="popular">
+  <div class="popular-card"><div class="pic">📱</div><span>Phones &amp; Tablets</span></div>
+  <div class="popular-card"><div class="pic">💻</div><span>Laptops</span></div>
+  <div class="popular-card"><div class="pic">🚗</div><span>Vehicles</span></div>
+  <div class="popular-card"><div class="pic">🧺</div><span>Home Appliances</span></div>
+  <div class="popular-card"><div class="pic">👟</div><span>Fashion</span></div>
+  <div class="popular-card"><div class="pic">🛋️</div><span>Furniture</span></div>
+ </div>
+</section>
+</main>
+
+<footer id="contact">
+ <div class="footer-inner">
+  <div><div class="footer-logo">🛍️ OCUDAALA</div><p>OMUDAALA is Uganda's trusted marketplace for new and used products. Buy, sell and connect with people near you.</p></div>
+  <div><h3>Quick Links</h3><ul><li>Home</li><li>Shop</li><li>Categories</li><li>Sell</li><li>About Us</li><li>Contact</li></ul></div>
+  <div><h3>Customer Support</h3><ul><li>Help Center</li><li>Terms &amp; Conditions</li><li>Privacy Policy</li><li>Shipping Info</li><li>Returns &amp; Refunds</li></ul></div>
+  <div><h3>Subscribe to Our Newsletter</h3><p>Get the latest products, deals and updates.</p><div class="newsletter"><input placeholder="Enter your email address"><button>Subscribe</button></div></div>
+ </div>
+ <div class="copyright"><span>© 2025 OMUDAALA. All rights reserved.</span><span>Buy. Sell. Find It.</span></div>
+</footer>
+
+<div class="mobile-bottom">
+ <button class="active"><b>⌂</b>Home</button><button onclick="document.querySelector('#shop').scrollIntoView()"><b>▣</b>Shop</button><button onclick="openSeller()"><b>＋</b>Sell</button><button onclick="toggleSaved()"><b>♡</b>Saved</button><button onclick="openAccount()"><b>♙</b>Account</button>
+</div>
+
+<div class="modal" id="modal"><div class="modal-box"><h2 id="modalTitle">OMUDAALA</h2><div id="modalBody"></div><div class="modal-actions"><button class="secondary" onclick="closeModal()">Close</button></div></div></div>
+
+<script>
+const products=[
+ {name:'iPhone 15 128GB',price:'UGX 2,800,000',condition:'NEW',cat:'Phones & Tablets',loc:'Kampala',phone:'+256 700 123 456',icon:'📱'},
+ {name:'HP ProBook Laptop',price:'UGX 1,200,000',condition:'USED',cat:'Electronics',loc:'Mbarara',phone:'+256 772 987 654',icon:'💻'},
+ {name:'Modern 3-Seater Sofa',price:'UGX 850,000',condition:'NEW',cat:'Home & Living',loc:'Kampala',phone:'+256 782 111 222',icon:'🛋️'},
+ {name:'Bajaj Boxer 150',price:'UGX 1,500,000',condition:'USED',cat:'Vehicles',loc:'Jinja',phone:'+256 703 445 566',icon:'🏍️'},
+ {name:'Samsung Fridge 250L',price:'UGX 1,800,000',condition:'NEW',cat:'Home Appliances',loc:'Kampala',phone:'+256 701 998 877',icon:'🧊'}
+];
+function render(list=products){
+ const el=document.getElementById('products'); el.innerHTML='';
+ list.forEach((p,i)=>{el.innerHTML+=`<article class="card"><div class="photo"><span class="badge ${p.condition==='NEW'?'new':'used'}">${p.condition}</span><button class="heart" onclick="saveProduct(${i})">♡</button><div style="font-size:70px">${p.icon}</div></div><h3>${p.name}</h3><div class="price">${p.price}</div><div class="meta">⌖ ${p.loc}</div><div class="meta">☎ ${p.phone}</div></article>`});
+}
+function searchProducts(){let q=document.getElementById('globalSearch').value.toLowerCase().trim();let list=q?products.filter(p=>(p.name+' '+p.cat+' '+p.loc).toLowerCase().includes(q)):products;render(list);document.querySelector('#shop').scrollIntoView({behavior:'smooth'});}
+function searchFromHero(){document.getElementById('globalSearch').value=document.getElementById('heroSearch').value;searchProducts()}
+function showModal(title,body){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function openAccount(){showModal('Login / Register',`<p>Access your OMUDAALA buyer or seller account.</p><input placeholder="Email or phone"><input type="password" placeholder="Password"><div class="modal-actions"><button onclick="alert('Demo login form ready for backend connection.')">Login</button><button onclick="alert('Demo registration form ready for backend connection.')">Create Account</button></div>`)}
+function openSeller(){showModal('Become a Seller',`<p>Start selling on OMUDAALA.</p><input placeholder="Full name"><input placeholder="Phone number"><input placeholder="Email"><div class="modal-actions"><button onclick="alert('Seller registration demo submitted.')">Continue</button></div>`)}
+function openCart(){showModal('Your Cart','<p>Your cart is currently empty.</p>')}
+function toggleSaved(){showModal('Saved Products','<p>Your saved products will appear here.</p>')}
+function saveProduct(i){showModal('Saved','<p><b>'+products[i].name+'</b> has been saved.</p>')}
+render();
+</script>
+</body>
+</html>
